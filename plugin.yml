@@ -1,0 +1,7 @@
+name: Craftabouts Custom Blocks
+main: us.hinchy.CraftaboutsCustomBlocks.CraftaboutsCustomBlocks
+version: 3
+description: Spout custom blocks for the Craftabouts Minecraft server.
+author: Zach Hinchy
+website: http://mine.wearethelayabouts.com/
+depend: [Spout]
