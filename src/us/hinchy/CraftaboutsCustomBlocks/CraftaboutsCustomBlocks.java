@@ -16,20 +16,24 @@ public class CraftaboutsCustomBlocks extends JavaPlugin {
 	public static CustomBlock hubPortalB;
 	public static CustomBlock pipeBlock;
 	public static CustomBlock pureDarkness;
-
+	public static CustomBlock hotIron;
+	
 	Logger log = Logger.getLogger("Minecraft");
 	
 	public final Texture hubPortalTexture = new Texture(this, "http://hinchy.us/spout/hubportal.png", 16, 16, 16);
 	public final Texture pipeBlockTexture = new Texture(this, "http://hinchy.us/spout/pipeblock.png", 16, 16, 16);
 	public final Texture pureDarknessTexture = new Texture(this, "http://hinchy.us/spout/puredarkness.png", 16, 16, 16);
+	public final Texture hotIronTexture = new Texture(this, "http://briguy.us/spout/hotIron.png", 16, 16, 16);
 	
 	public void onEnable() { 
 		hubPortalA = new HubPortalBlockTypeA(this,hubPortalTexture);
 		hubPortalB = new HubPortalBlockTypeB(this,hubPortalTexture);
 		pipeBlock = new PipeBlock(this,pipeBlockTexture);
 		pureDarkness = new PureDarknessBlock(this,pureDarknessTexture);
+		hotIron = new HotIron(this,hotIronTexture);
 		
 		pipeBlock.setLightLevel(6);
+		hotIron.setLightLevel(8);
 
         SpoutShapelessRecipe recipe = new SpoutShapelessRecipe(new SpoutItemStack(pipeBlock, 3));
         recipe.addIngredient(1, MaterialData.ironBlock);
