@@ -33,7 +33,9 @@ public class CraftaboutsCustomBlocks extends JavaPlugin {
 		hotIron = new HotIron(this,hotIronTexture);
 		
 		pipeBlock.setLightLevel(6);
+
 		hotIron.setLightLevel(8);
+		hotIron.setHardness(15);
 
         SpoutShapelessRecipe recipe = new SpoutShapelessRecipe(new SpoutItemStack(pipeBlock, 3));
         recipe.addIngredient(1, MaterialData.ironBlock);
