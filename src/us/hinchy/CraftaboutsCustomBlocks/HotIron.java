@@ -7,6 +7,6 @@ import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
 public class HotIron extends GenericCubeCustomBlock {
     public HotIron(Plugin plugin, Texture texture) {
-        super(plugin, "Heated Iron", 81, new GenericCubeBlockDesign(plugin, texture, 0));
+        super(plugin, "Heated Iron", 42, new GenericCubeBlockDesign(plugin, texture, 0));
     }
 }
