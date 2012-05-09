@@ -1,0 +1,28 @@
+craftabouts:
+    pipeblockl:
+        texture: 'http://hinchy.us/spout/pipeblock_light.png'
+        size: 16
+    pipeblockd:
+        texture: 'http://hinchy.us/spout/pipeblock_dark.png'
+        size: 16
+    puredarkness:
+        texture: 'http://hinchy.us/spout/puredarkness.png'
+        size: 16
+    hubportal:
+        texture: 'http://hinchy.us/spout/hubportal.png'
+        size: 16
+    hotiron:
+        texture: 'http://briguy.us/spout/hotIron.png'
+        size: 16
+    warpzonefloor:
+        texture: 'http://hinchy.us/spout/warpzone_floor.png'
+        size: 16
+    warpzonetile:
+        texture: 'http://hinchy.us/spout/warpzone_tile.png'
+        size: 16
+    warpzonebrick:
+        texture: 'http://hinchy.us/spout/warpzone_brick.png'
+        size: 16
+    warpzonequestion:
+        texture: 'http://hinchy.us/spout/warpzone_question.png'
+        size: 16

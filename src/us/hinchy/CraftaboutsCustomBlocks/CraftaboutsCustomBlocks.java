@@ -18,45 +18,85 @@ public class CraftaboutsCustomBlocks extends JavaPlugin implements Listener {
 
 	public static CustomBlock hubPortalA;
 	public static CustomBlock hubPortalB;
-	public static CustomBlock pipeBlock;
+	public static CustomBlock pipeBlockL;
+	public static CustomBlock pipeBlockD;
 	public static CustomBlock pureDarkness;
 	public static CustomBlock hotIron;
+	public static CustomBlock warpZoneFloor;
+	public static CustomBlock warpZoneTile;
+	public static CustomBlock warpZoneBrick;
+	public static CustomBlock warpZoneQuestionBlock;
 	
 	Logger log = Logger.getLogger("Minecraft");
 	
 	public static Texture hubPortalTexture;
-	public static Texture pipeBlockTexture;
+	public static Texture pipeBlockLTexture;
+	public static Texture pipeBlockDTexture;
 	public static Texture pureDarknessTexture;
 	public static Texture hotIronTexture;
+	public static Texture warpZoneFloorTexture;
+	public static Texture warpZoneTileTexture;
+	public static Texture warpZoneBrickTexture;
+	public static Texture warpZoneQuestionBlockTexture;
 	
 	public void onEnable() {
 		this.getConfig();
 		
-		if (this.getConfig().isSet("spikeblock") == false) {
+		if (this.getConfig().isSet("craftabouts") == false) {
 			this.saveDefaultConfig();
 			log.info("[Craftabouts Custom Blocks] Config did not exist or was invalid, default config saved.");
 		}
 		
 		hubPortalTexture = new Texture(this, getConfig().getString("craftabouts.hubportal.texture"), getConfig().getInt("craftabouts.hubportal.size"), getConfig().getInt("craftabouts.hubportal.size"), getConfig().getInt("craftabouts.hubportal.size"));
-		pipeBlockTexture = new Texture(this, getConfig().getString("craftabouts.pipeblock.texture"), getConfig().getInt("craftabouts.pipeblock.size"), getConfig().getInt("craftabouts.pipeblock.size"), getConfig().getInt("craftabouts.pipeblock.size"));
+		pipeBlockLTexture = new Texture(this, getConfig().getString("craftabouts.pipeblockl.texture"), getConfig().getInt("craftabouts.pipeblockl.size"), getConfig().getInt("craftabouts.pipeblockl.size"), getConfig().getInt("craftabouts.pipeblockl.size"));
+		pipeBlockDTexture = new Texture(this, getConfig().getString("craftabouts.pipeblockd.texture"), getConfig().getInt("craftabouts.pipeblockd.size"), getConfig().getInt("craftabouts.pipeblockd.size"), getConfig().getInt("craftabouts.pipeblockd.size"));
 		pureDarknessTexture = new Texture(this, getConfig().getString("craftabouts.puredarkness.texture"), getConfig().getInt("craftabouts.puredarkness.size"), getConfig().getInt("craftabouts.puredarkness.size"), getConfig().getInt("craftabouts.puredarkness.size"));
 		hotIronTexture = new Texture(this, getConfig().getString("craftabouts.hotiron.texture"), getConfig().getInt("craftabouts.hotiron.size"), getConfig().getInt("craftabouts.hotiron.size"), getConfig().getInt("craftabouts.hotiron.size"));
+
+		warpZoneFloorTexture = new Texture(this, getConfig().getString("craftabouts.warpzonefloor.texture"), getConfig().getInt("craftabouts.warpzonefloor.size"), getConfig().getInt("craftabouts.warpzonefloor.size"), getConfig().getInt("craftabouts.warpzonefloor.size"));
+		warpZoneTileTexture = new Texture(this, getConfig().getString("craftabouts.warpzonetile.texture"), getConfig().getInt("craftabouts.warpzonetile.size"), getConfig().getInt("craftabouts.warpzonetile.size"), getConfig().getInt("craftabouts.warpzonetile.size"));
+		warpZoneBrickTexture = new Texture(this, getConfig().getString("craftabouts.warpzonebrick.texture"), getConfig().getInt("craftabouts.warpzonebrick.size"), getConfig().getInt("craftabouts.warpzonebrick.size"), getConfig().getInt("craftabouts.warpzonebrick.size"));
+		warpZoneQuestionBlockTexture = new Texture(this, getConfig().getString("craftabouts.warpzonequestion.texture"), getConfig().getInt("craftabouts.warpzonequestion.size")*2, getConfig().getInt("craftabouts.warpzonequestion.size"), getConfig().getInt("craftabouts.warpzonequestion.size"));
 		
 		hubPortalA = new HubPortalBlockTypeA(this,hubPortalTexture);
 		hubPortalB = new HubPortalBlockTypeB(this,hubPortalTexture);
-		pipeBlock = new PipeBlock(this,pipeBlockTexture);
+		pipeBlockL = new PipeBlockL(this,pipeBlockLTexture);
+		pipeBlockD = new PipeBlockD(this,pipeBlockDTexture);
 		pureDarkness = new PureDarknessBlock(this,pureDarknessTexture);
 		hotIron = new HotIron(this,hotIronTexture);
-		
-		pipeBlock.setLightLevel(6);
+		warpZoneFloor = new WarpZoneFloor(this,warpZoneFloorTexture);
+		warpZoneTile = new WarpZoneTile(this,warpZoneTileTexture);
+		warpZoneBrick = new WarpZoneBrick(this,warpZoneBrickTexture);
+		warpZoneQuestionBlock = new WarpZoneQuestionBlock(this,warpZoneQuestionBlockTexture);
+
+		pipeBlockL.setLightLevel(6);
+		pipeBlockD.setLightLevel(4);
 		
 		hotIron.setLightLevel(8);
 		hotIron.setHardness(15);
+		
+		warpZoneQuestionBlock.setLightLevel(15);
 
-        SpoutShapelessRecipe recipe = new SpoutShapelessRecipe(new SpoutItemStack(pipeBlock, 3));
+        SpoutShapelessRecipe recipe = new SpoutShapelessRecipe(new SpoutItemStack(pipeBlockD, 3));
         recipe.addIngredient(1, MaterialData.ironBlock);
         recipe.addIngredient(1, MaterialData.enderPearl);
         recipe.addIngredient(1, MaterialData.cactusGreen);
+        SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
+
+        recipe = new SpoutShapelessRecipe(new SpoutItemStack(pipeBlockL, 3));
+        recipe.addIngredient(1, MaterialData.ironBlock);
+        recipe.addIngredient(1, MaterialData.enderPearl);
+        recipe.addIngredient(1, MaterialData.limeDye);
+        SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
+
+        recipe = new SpoutShapelessRecipe(new SpoutItemStack(pipeBlockD, 1));
+        recipe.addIngredient(1, MaterialData.inkSac);
+        recipe.addIngredient(1, pipeBlockL);
+        SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
+
+        recipe = new SpoutShapelessRecipe(new SpoutItemStack(pipeBlockL, 1));
+        recipe.addIngredient(1, MaterialData.boneMeal);
+        recipe.addIngredient(1, pipeBlockD);
         SpoutManager.getMaterialManager().registerSpoutRecipe(recipe);
         
         getServer().getPluginManager().registerEvents(this, this);

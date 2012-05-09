@@ -5,8 +5,8 @@ import org.getspout.spoutapi.block.design.GenericCubeBlockDesign;
 import org.getspout.spoutapi.block.design.Texture;
 import org.getspout.spoutapi.material.block.GenericCubeCustomBlock;
 
-public class PipeBlock extends GenericCubeCustomBlock {
-    public PipeBlock(Plugin plugin, Texture texture) {
-        super(plugin, "Pipe Block", 35, 5, new GenericCubeBlockDesign(plugin, texture, 0));
+public class WarpZoneTile extends GenericCubeCustomBlock {
+    public WarpZoneTile(Plugin plugin, Texture texture) {
+        super(plugin, "Warp Zone Tile", 42, new GenericCubeBlockDesign(plugin, texture, 0));
     }
 }
